@@ -3,7 +3,8 @@ name: Run API Tests
 on: [push, pull_request]
 
 jobs:
-  test:
+  test-one:
+    name: Test Inventory API
     runs-on: ubuntu-latest
 
     services:
@@ -20,9 +21,15 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18 
+          cache: 'npm'
+          cache-dependency-path: update-inventory-backend/package-lock.json 
 
       - name: Install Dependencies
-        run: npm install
+        run: |
+          cd update-inventory-backend
+          npm install
 
       - name: Run Tests
-        run: npm test
+        rrun: |
+          cd update-inventory-backend
+          npm test
