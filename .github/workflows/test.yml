@@ -1,6 +1,6 @@
 name: Test Update Inventory API
 
-on: [push, pull_request]  # Runs tests on every push or PR
+on: [push, pull_request] 
 
 jobs:
   test-update-inventory:
