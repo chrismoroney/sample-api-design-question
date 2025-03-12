@@ -26,10 +26,10 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          cd update-inventory-backend  # ✅ Ensure correct navigation
+          cd update-inventory-backend
           npm install
 
       - name: Run Tests
         run: |
-          cd update-inventory-backend  # ✅ Ensure tests run in correct folder
+          cd update-inventory-backend
           npm test
