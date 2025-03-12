@@ -1,35 +1,35 @@
-name: Run API Tests
+name: Test Update Inventory API
 
-on: [push, pull_request]
+on: [push, pull_request]  # Runs tests on every push or PR
 
 jobs:
-  test-one:
-    name: Test Inventory API
+  test-update-inventory:
+    name: Test Update Inventory API
     runs-on: ubuntu-latest
 
     services:
       mongodb:
-        image: mongo:7.0 
+        image: mongo:7.0
         ports:
-          - 27017:27017 
+          - 27017:27017
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3 
+        uses: actions/checkout@v3
 
       - name: Set Up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18 
+          node-version: 18
           cache: 'npm'
-          cache-dependency-path: update-inventory-backend/package-lock.json 
+          cache-dependency-path: update-inventory-backend/package-lock.json
 
       - name: Install Dependencies
         run: |
-          cd update-inventory-backend
+          cd update-inventory-backend  # ✅ Ensure correct navigation
           npm install
 
       - name: Run Tests
-        rrun: |
-          cd update-inventory-backend
+        run: |
+          cd update-inventory-backend  # ✅ Ensure tests run in correct folder
           npm test
